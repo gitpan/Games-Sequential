@@ -33,7 +33,7 @@ provided for convenience; you don't need this class to use
 C<Games::Sequential>. It is also possible to use this class on
 its own.
 
-=head1 MISSING METHODS
+=head1 PURE VIRTUAL METHODS
 
 Modules inheriting this class must implement at least the
 C<apply()> method. If you chose to not use this class, you must
@@ -57,8 +57,13 @@ Something like this (sans error checking):
         return $self;
     }
 
-=back
+=cut
 
+sub apply {
+    croak "apply(): Call to pure virtual method\n";
+}
+
+=back
 
 =head1 METHODS
 
@@ -79,7 +84,6 @@ sub new {
     my $self = bless {}, $class;
 
     $self->_init(@_) or carp "Failed to init object!";
-    croak "no apply() method defined" unless $self->can("apply");
 
     return $self;
 }

@@ -4,7 +4,7 @@ use ExtUtils::MakeMaker;
 # the contents of the Makefile that is written.
 WriteMakefile(
     NAME              => 'Games::Sequential',
-    VERSION           => '0.4.1',
+    VERSION           => '0.4.2',
     PREREQ_PM         => {Data::Dumper => 0, Carp => 0}, # any version will do
     ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
       (ABSTRACT_FROM  => 'lib/Games/Sequential.pm', # retrieve abstract from module

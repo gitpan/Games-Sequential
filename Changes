@@ -2,6 +2,29 @@
 # arch-tag: automatic-ChangeLog--stig@brautaset.org--2004/Games-Sequential--release--0.4
 #
 
+2004-11-20 14:51:41 GMT	Stig Brautaset <stig@brautaset.org>	patch-2
+
+    Summary:
+      made apply() "pure virtual" method is called, instead of croaking if not present
+    Revision:
+      Games-Sequential--release--0.4--patch-2
+
+    Patches applied:
+    
+     * stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-16
+       make apply() method pure virtual
+    
+     * stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-17
+       added META.yml to MANIFEST
+    
+     * stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-18
+       removed automatic module increment script
+    
+     * stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-19
+       increment version number in dist
+    
+
+
 2004-09-03 23:56:26 GMT	Stig Brautaset <stig@brautaset.org>	patch-1
 
     Summary:
