@@ -1,12 +1,10 @@
-Games::Sequential version 0.11
+Games::Sequential version 0.12
 ==============================
 
 Games::Sequential provides an object oriented framework for
 developing sequential games. It pretty much only has support for
 keeping history (thus allowing undo) at the moment, though more
 is planned.
-
-This is the initial release.
 
 
 INSTALLATION

@@ -2,6 +2,18 @@
 # arch-tag: automatic-ChangeLog--stig@brautaset.org--2004/games-sequential--devo--0.1
 #
 
+2004-06-11 21:46:54 GMT	Stig Brautaset <stig@brautaset.org>	patch-7
+
+    Summary:
+      fixed pod syntax error + bumped version
+    Revision:
+      games-sequential--devo--0.1--patch-7
+
+
+    modified files:
+     Changes README lib/Games/Sequential.pm
+
+
 2004-06-11 19:07:39 GMT	Stig Brautaset <stig@brautaset.org>	patch-6
 
     Summary:

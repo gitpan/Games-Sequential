@@ -4,7 +4,7 @@ use 5.006001;
 use strict;
 use warnings;
 
-our $VERSION = '0.11';
+our $VERSION = '0.12';
 
 =head1 NAME
 
@@ -19,7 +19,7 @@ Games::Sequential - framework for sequential games with object oriented interfac
 
   $game->move($move);
   $game->undo;
-  
+
 
 =head1 DESCRIPTION
 
@@ -241,6 +241,7 @@ sub undo {
 
 __END__
 
+=back
 
 =head1 TODO
 
