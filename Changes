@@ -2,6 +2,44 @@
 # arch-tag: automatic-ChangeLog--stig@brautaset.org--2004/Games-Sequential--release--0.4
 #
 
+2004-09-03 23:56:26 GMT	Stig Brautaset <stig@brautaset.org>	patch-1
+
+    Summary:
+      expanded base position class + updated documentation
+    Revision:
+      Games-Sequential--release--0.4--patch-1
+
+    Patches applied:
+    
+     * stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-15
+       bump version number of Games::Sequential.pm (last time manually)
+    
+     * stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-14
+       only invoke the version-incrementor-script on devo branch
+    
+     * stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-13
+       elaborated a bit in synopsis
+    
+     * stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-12
+       added precommit hook to increment perlmod minor version number when modified
+    
+     * stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-11
+       added dependency on Data::Dumper
+    
+     * stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-10
+       added the dump() and player() routines
+    
+     * stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-9
+       documentation update (pod + README)
+    
+     * stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-8
+       specify version for dist explicitly, not from module
+    
+     * stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-7
+       do not archive generated files
+    
+
+
 2004-08-29 15:28:06 GMT	Stig Brautaset <stig@brautaset.org>	base-0
 
     Summary:

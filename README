@@ -1,14 +1,8 @@
-Games::AlphaBeta version 0.30
-=============================
+Games::Sequential & Games::Sequential::Position
+===============================================
 
-Games::AlphaBeta provides a generic implementation of the
-AlphaBeta game-tree search algorithm (also known as MiniMax
-search with alpha beta pruning). This algorithm can be used to
-find the best move at a particular position in any two-player,
-zero-sum game with perfect information. Examples of such games
-include Chess, Othello, Connect4, Go, Tic-Tac-Toe and many other
-boardgames. 
-
+These modules form an object-oriented framework for creating
+sequential games in Perl.
 
 INSTALLATION
 

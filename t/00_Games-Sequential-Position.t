@@ -2,7 +2,7 @@
 # `make test'. After `make install' it should work as `perl
 # Games-Sequential-Position.t'
 
-use Test::More tests => 10;
+use Test::More tests => 13;
 
 package My::Pos;
 BEGIN { 
@@ -32,7 +32,12 @@ my ($p, $n);
 ok($p = My::Pos->new,           "new()");
 isa_ok($p, Games::Sequential::Position);
 
-can_ok($p, qw/new _init copy/);
+can_ok($p, qw/new _init copy dump player/);
+
+is($p->player, 1,               "player()");
+is($p->player(2), 2,            "player(2)");
+
+ok($n = $p->dump,               "dump()");
 
 is($p->apply(1), 2,             "apply(1)");
 is($p->apply(2), 4,             "apply(2)");

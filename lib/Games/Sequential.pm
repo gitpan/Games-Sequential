@@ -4,7 +4,7 @@ use 5.006001;
 use strict;
 use warnings;
 
-our $VERSION = '0.4.0';
+our $VERSION = '0.4.1';
 
 =head1 NAME
 
@@ -12,32 +12,32 @@ Games::Sequential - sequential games framework with OO interface
 
 =head1 SYNOPSIS
 
-  package Some::Game;
-  use base Games::Sequential::Position;
+    package My::GamePos;
+    use base Games::Sequential::Position;
 
-  sub apply { ... }
+    sub apply { ... }
 
-  package main;
-  my $pos = Some::Game->new;
-  my $game = Games::Sequential->new($pos);
+    package main;
+    my $pos = My::GamePos->new;
+    my $game = Games::Sequential->new($pos);
 
-  $game->debug(1);
-  $game->move($mv);
-  $game->undo;
+    $game->debug(1);
+    $game->move($mv);
+    $game->undo;
 
 
 =head1 DESCRIPTION
 
 Games::Sequential is a framework for producing sequential games.
-It provides an undo mechanism, as it keeps track of the history
-of moves, in addition to methods to clone a game state with or
-without history.
+Among other things it keeps track of the sequence of moves, and
+provides an unlimited C<undo()> mechanism. It also has methods to
+C<clone()> or take a C<snapshot()> of a game.
 
 Users must pass an object representing the initial state of the
-game as the first argument to ->new(). This object *must* provide
-two methods: ->copy() and ->apply(). You can use
-Games::Sequential::Position as a base class, in which case the
-->copy() method will be provided for you. The ->apply() method
+game as the first argument to C<new()>. This object must provide
+the two methods C<copy()> and C<apply()>. You can use
+L<Games::Sequential::Position> as a base class, in which case the
+C<copy()> method will be provided for you. The C<apply()> method
 must take a move and apply it to the current position, producing
 the next position in the game. 
 
@@ -50,9 +50,9 @@ returned by any of the below methods.
 
 =item new $initialpos [@list]
 
-Create and return a new AlphaBeta object. The first argument must
-be an object representing the initial position of the game. The
-C<debug> option can also be set here. 
+Create and return a new L<Games::Sequential> object. The first
+argument must be an object representing the initial position of
+the game. The C<debug> option can also be set here. 
 
 =cut 
 
@@ -70,7 +70,7 @@ sub new {
 
 I<Internal method>
 
-Initialize an AlphaBeta object.
+Initialize a L<Games::Sequential> object.
 
 =cut
 
@@ -185,20 +185,23 @@ __END__
 
 =back
 
+
 =head1 TODO
 
-Implement missing methods: clone(), snapshot(), save() E<amp>
-resume().
+Implement the missing methods C<clone()>, C<snapshot()>,
+C<save()> E<amp> C<resume()>.
 
 
 =head1 SEE ALSO
 
 The author's website, describing this and other projects:
-http://brautaset.org/projects/
+L<http://brautaset.org/projects/>
+
 
 =head1 AUTHOR
 
 Stig Brautaset, E<lt>stig@brautaset.orgE<gt>
+
 
 =head1 COPYRIGHT AND LICENCE
 
