@@ -7,7 +7,7 @@
 package My::Pos;
 use base Games::Sequential::Position;
 
-sub _init {
+sub init {
     my $self = shift;
     my %config = (
         sum => 1
@@ -15,7 +15,7 @@ sub _init {
 
     @$self{keys %config} = values %config;
 
-    return $self->SUPER::_init(@_);
+    return $self->SUPER::init(@_);
 }
 
 sub apply {

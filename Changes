@@ -2,6 +2,35 @@
 # arch-tag: automatic-ChangeLog--stig@brautaset.org--2004/Games-Sequential--release--0.4
 #
 
+2004-12-10 23:29:11 GMT	Stig Brautaset <stig@brautaset.org>	patch-3
+
+    Summary:
+      speeded up the copy() method + renamed _init() -> init()
+    Revision:
+      Games-Sequential--release--0.4--patch-3
+
+    Patches applied:
+    
+     * stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-22
+       bumped version numbers
+    
+     * stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-21
+       renamed _init() -> init() + updated pod
+    
+     * stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-20
+       implement ->copy() using Storable instead of Data::Dumper + remove ->dump()
+    
+
+    modified files:
+     Changes Makefile.PL lib/Games/Sequential/Position.pm
+     t/00_Games-Sequential-Position.t t/01_Games-Sequential.t
+
+    new patches:
+     stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-20
+     stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-21
+     stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-22
+
+
 2004-11-20 14:51:41 GMT	Stig Brautaset <stig@brautaset.org>	patch-2
 
     Summary:
@@ -23,6 +52,21 @@
      * stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-19
        increment version number in dist
     
+
+    new files:
+     Changes
+
+    removed files:
+     Changes
+
+    modified files:
+     MANIFEST Makefile.PL lib/Games/Sequential/Position.pm
+
+    new patches:
+     stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-16
+     stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-17
+     stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-18
+     stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-19
 
 
 2004-09-03 23:56:26 GMT	Stig Brautaset <stig@brautaset.org>	patch-1
@@ -61,6 +105,22 @@
      * stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-7
        do not archive generated files
     
+
+    modified files:
+     Changes MANIFEST Makefile.PL README lib/Games/Sequential.pm
+     lib/Games/Sequential/Position.pm
+     t/00_Games-Sequential-Position.t
+
+    new patches:
+     stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-7
+     stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-8
+     stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-9
+     stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-10
+     stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-11
+     stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-12
+     stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-13
+     stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-14
+     stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-15
 
 
 2004-08-29 15:28:06 GMT	Stig Brautaset <stig@brautaset.org>	base-0
@@ -144,5 +204,75 @@
      * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.3--base-0
        more OO focus on interface + add Games::Sequential to bundle
     
+
+    new patches:
+     stig@brautaset.org--2004/Games-AlphaBeta--devo--0.3--base-0
+     stig@brautaset.org--2004/Games-AlphaBeta--devo--0.3--patch-1
+     stig@brautaset.org--2004/Games-AlphaBeta--devo--0.3--patch-2
+     stig@brautaset.org--2004/Games-AlphaBeta--devo--0.3--patch-3
+     stig@brautaset.org--2004/Games-AlphaBeta--devo--0.3--patch-4
+     stig@brautaset.org--2004/Games-AlphaBeta--devo--0.3--patch-5
+     stig@brautaset.org--2004/Games-AlphaBeta--devo--0.3--patch-6
+     stig@brautaset.org--2004/Games-AlphaBeta--devo--0.3--patch-7
+     stig@brautaset.org--2004/Games-AlphaBeta--devo--0.3--patch-8
+     stig@brautaset.org--2004/Games-AlphaBeta--devo--0.3--patch-9
+     stig@brautaset.org--2004/Games-AlphaBeta--devo--0.3--patch-10
+     stig@brautaset.org--2004/Games-Sequential--devo--0.4--base-0
+     stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-1
+     stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-2
+     stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-3
+     stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-4
+     stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-5
+     stig@brautaset.org--2004/Games-Sequential--devo--0.4--patch-6
+     stig@brautaset.org--2004/alphabeta--devo--1.0--base-0
+     stig@brautaset.org--2004/alphabeta--devo--1.0--patch-1
+     stig@brautaset.org--2004/alphabeta--devo--1.0--patch-2
+     stig@brautaset.org--2004/alphabeta--devo--1.0--patch-3
+     stig@brautaset.org--2004/alphabeta--devo--1.0--patch-4
+     stig@brautaset.org--2004/alphabeta--devo--1.0--patch-5
+     stig@brautaset.org--2004/alphabeta--devo--1.0--patch-6
+     stig@brautaset.org--2004/alphabeta--devo--1.0--patch-7
+     stig@brautaset.org--2004/alphabeta--devo--1.0--patch-8
+     stig@brautaset.org--2004/alphabeta--devo--1.0--patch-9
+     stig@brautaset.org--2004/games-alphabeta--devo--0.1--base-0
+     stig@brautaset.org--2004/games-alphabeta--devo--0.1--patch-1
+     stig@brautaset.org--2004/games-alphabeta--devo--0.1--patch-2
+     stig@brautaset.org--2004/games-alphabeta--devo--0.1--patch-3
+     stig@brautaset.org--2004/games-alphabeta--devo--0.1--patch-4
+     stig@brautaset.org--2004/games-alphabeta--devo--0.1--patch-5
+     stig@brautaset.org--2004/games-alphabeta--devo--0.1--patch-6
+     stig@brautaset.org--2004/games-alphabeta--devo--0.1--patch-7
+     stig@brautaset.org--2004/games-alphabeta--devo--0.1--patch-8
+     stig@brautaset.org--2004/games-alphabeta--devo--0.1--patch-9
+     stig@brautaset.org--2004/games-alphabeta--devo--0.1--patch-10
+     stig@brautaset.org--2004/games-alphabeta--devo--0.1--patch-11
+     stig@brautaset.org--2004/games-alphabeta--devo--0.1--patch-12
+     stig@brautaset.org--2004/games-alphabeta--devo--0.1--patch-13
+     stig@brautaset.org--2004/games-alphabeta--devo--0.1--patch-14
+     stig@brautaset.org--2004/games-alphabeta--devo--0.1--patch-15
+     stig@brautaset.org--2004/games-alphabeta--devo--0.2--base-0
+     stig@brautaset.org--2004/games-alphabeta--devo--0.2--patch-1
+     stig@brautaset.org--2004/games-alphabeta--devo--0.2--patch-2
+     stig@brautaset.org--2004/games-alphabeta--devo--0.2--patch-3
+     stig@brautaset.org--2004/games-alphabeta--devo--0.2--patch-4
+     stig@brautaset.org--2004/games-alphabeta--devo--0.2--patch-5
+     stig@brautaset.org--2004/games-alphabeta--devo--0.2--patch-6
+     stig@brautaset.org--2004/games-alphabeta--devo--0.2--patch-7
+     stig@brautaset.org--2004/games-alphabeta--devo--0.2--patch-8
+     stig@brautaset.org--2004/games-alphabeta--devo--0.2--patch-9
+     stig@brautaset.org--2004/games-alphabeta--devo--0.2--patch-10
+     stig@brautaset.org--2004/games-alphabeta--devo2--0.2--base-0
+     stig@brautaset.org--2004/games-alphabeta--devo2--0.2--patch-1
+     stig@brautaset.org--2004/games-alphabeta--release--0.2--base-0
+     stig@brautaset.org--2004/games-alphabeta--release--0.2--patch-1
+     stig@brautaset.org--2004/games-alphabeta--release--0.2--patch-2
+     stig@brautaset.org--2004/games-alphabeta--release--0.2--version-0
+     stig@brautaset.org--2004/games-alphabeta--release2--0.2--base-0
+     stig@brautaset.org--2004/ggtl-perl--devo--0.1--base-0
+     stig@brautaset.org--2004/ggtl-perl--devo--0.1--patch-1
+     stig@brautaset.org--2004/ggtl-perl--devo--0.1--patch-2
+     stig@brautaset.org--2004/ggtl-perl--devo--0.1--patch-3
+     stig@brautaset.org--2004/ggtl-perl--devo--0.1--patch-4
+     stig@brautaset.org--2004/ggtl-perl--devo--0.1--patch-5
 
 

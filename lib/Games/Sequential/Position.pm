@@ -3,10 +3,10 @@ use strict;
 use warnings;
 
 use Carp;
-use Data::Dumper;
+use Storable qw(dclone);
 use 5.006001;
 
-our $VERSION = '0.1';
+our $VERSION = '0.3';
 
 =head1 NAME
 
@@ -17,7 +17,7 @@ Games::Sequential::Position - base Position class for use with Games::Sequential
     package My::GamePos;
     use base Games::Sequential::Position;
 
-    sub _init { ... }   # setup initial state
+    sub init { ... }   # setup initial state
     sub apply { ... }
 
     package main;
@@ -74,7 +74,7 @@ The following methods are provided by this class.
 =item new [@list]
 
 Create and return an object. Any arguments is passed on to the
-C<_init()> method. Return a blessed hash reference.
+C<init()> method. Return a blessed hash reference.
 
 =cut 
 
@@ -83,24 +83,25 @@ sub new {
     my $class = ref($invocant) || $invocant;
     my $self = bless {}, $class;
 
-    $self->_init(@_) or carp "Failed to init object!";
+    $self->init(@_) or carp "Failed to initialise object!";
 
     return $self;
 }
 
 
-=item _init [@list]
+=item init [@list]
 
-I<Internal method.>
+Initialize an object. By default, this only means setting player
+1 to be the current player.
 
-Initialize an object. This method is called by C<new()>, so you
-do not have to override that. You probably want to override this
-though. You might want to call C<$self->SUPER::_init(@_)> from
-within the overriding method.
+This method is called by C<new()>. You You probably want to
+override this method and initialise your position there. You can
+call C<$self->SUPER::init(@_)> from within the overriding method
+to set default variables.
 
 =cut
 
-sub _init {
+sub init {
     my $self = shift;
     my $args = @_ && ref($_[0]) ? shift : { @_ };
     my %config = (
@@ -120,30 +121,14 @@ sub _init {
 
 =item copy
 
-Return a deep copy of the object.
+Clone a position.
 
 =cut
 
 sub copy {
-    local $Data::Dumper::Purity = 1;
-    local $Data::Dumper::Deepcopy = 1;
-    local $Data::Dumper::Indent = 0;
-
-    no strict "vars";
-    return eval Dumper($_[0]);
+    my $self = shift;
+    return dclone($self);
 }
-
-
-=item dump
-
-Return a string dump (by Data::Dumper) of the current position.
-
-=cut
-
-sub dump {
-    return Dumper(shift);
-}
-
 
 
 =item player [$player]
