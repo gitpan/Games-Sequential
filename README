@@ -1,10 +1,13 @@
-Games::Sequential version 0.2.x
-===============================
+Games::AlphaBeta version 0.30
+=============================
 
-Games::Sequential provides an object oriented framework for
-developing sequential games. It pretty much only has support for
-keeping history (thus allowing undo) at the moment, though more
-is planned.
+Games::AlphaBeta provides a generic implementation of the
+AlphaBeta game-tree search algorithm (also known as MiniMax
+search with alpha beta pruning). This algorithm can be used to
+find the best move at a particular position in any two-player,
+zero-sum game with perfect information. Examples of such games
+include Chess, Othello, Connect4, Go, Tic-Tac-Toe and many other
+boardgames. 
 
 
 INSTALLATION
@@ -18,7 +21,7 @@ To install this module type the following:
 
 DEPENDENCIES
 
-This module will carp or croak rather than warn and die.
+This module depends on Carp.
 
 COPYRIGHT AND LICENCE
 

@@ -4,61 +4,55 @@ use 5.006001;
 use strict;
 use warnings;
 
-our $VERSION = '0.2.3';
+our $VERSION = '0.4.0';
 
 =head1 NAME
 
-Games::Sequential - framework for sequential games with object oriented interface
+Games::Sequential - sequential games framework with OO interface
 
 =head1 SYNOPSIS
 
-  use Games::Sequential;
-  my $game = Games::Sequential->new($initialpos, move => \&move );
+  package Some::Game;
+  use base Games::Sequential::Position;
+
+  sub apply { ... }
+
+  package main;
+  my $pos = Some::Game->new;
+  my $game = Games::Sequential->new($pos);
 
   $game->debug(1);
-
-  $game->move($move);
+  $game->move($mv);
   $game->undo;
 
 
 =head1 DESCRIPTION
 
-Games::Sequential provides a simple base class for sequential
-games. The module provides an undo mechanism, as it keeps track
-of the history of moves, in addition to methods to clone a game
-state with or without history.
+Games::Sequential is a framework for producing sequential games.
+It provides an undo mechanism, as it keeps track of the history
+of moves, in addition to methods to clone a game state with or
+without history.
 
-Users will have to provide this module with a reference to a
-callback function to perform a move in the game they are
-implementing. This callback is:
-
-=over 4
-
-=item C<move> $position, $move
-
-Create $newpos as copy of $position and apply $move to it.
-Return $newpos.
-
-=back
-
+Users must pass an object representing the initial state of the
+game as the first argument to ->new(). This object *must* provide
+two methods: ->copy() and ->apply(). You can use
+Games::Sequential::Position as a base class, in which case the
+->copy() method will be provided for you. The ->apply() method
+must take a move and apply it to the current position, producing
+the next position in the game. 
 
 =head1 METHODS
 
 Users must not modify the referred-to values of references
-returned by any of the below methods, except, of course,
-indirectly using the supplied callbacks mentioned above.
+returned by any of the below methods.
 
 =over 4
 
-=item new [@list]
+=item new $initialpos [@list]
 
-Create and return a new AlphaBeta object.
-
-The function C<move> can be given as an argument to this
-function. If so, there is no need to call the C<setfuncs()>
-method. Similarly, if a valid starting position is given (as
-C<initialpos>) there is no need to call init() on the returned
-object. The C<debug> option can also be set here. 
+Create and return a new AlphaBeta object. The first argument must
+be an object representing the initial position of the game. The
+C<debug> option can also be set here. 
 
 =cut 
 
@@ -76,7 +70,7 @@ sub new {
 
 I<Internal method>
 
-Initialize a AlphaBeta object.
+Initialize an AlphaBeta object.
 
 =cut
 
@@ -90,9 +84,6 @@ sub _init {
         pos_hist    => [ $pos ],
         move_hist   => [],
 
-        # Callbacks
-        move        => undef,
-
         # Debug and statistics
         debug       => 0,
     );
@@ -105,25 +96,9 @@ sub _init {
         $self->{$key} = $val if exists $self->{$key};
     }
 
-    return $self;
-}
+    croak "no apply() method defined for position object" 
+        unless $pos->can("apply");
 
-
-=item setfuncs @list
-
-Set (or change) callback functions. This method is required
-unless ->new() is invoked with MOVE as an argument.
-
-=cut
-
-sub setfuncs {
-    my $self = shift;
-    croak "Setfuncs called with no arguments!" unless @_;
-    my $args = @_ && ref($_[0]) ? shift : { @_ };
-
-    while (my ($key, $val) = each %{ $self }) {
-        $self->{$key} = $args->{$key} if ref($args->{$key}) eq 'CODE';
-    }
     return $self;
 }
 
@@ -177,10 +152,10 @@ A reference to the new position is returned, or undef on failure.
 
 sub move {
     my ($self, $move) = @_;
-    my $pos = $self->peek_pos;
+    my ($pos, $npos) = $self->peek_pos;
 
-    my $npos = $self->{move}($pos, $move);
-    return unless $npos;
+    $npos = $pos->copy or croak "$pos->copy() failed";
+    $npos->apply($move) or croak "$pos->apply() failed";
 
     push @{ $self->{pos_hist} }, $npos;
     push @{ $self->{move_hist} }, $move;
@@ -199,7 +174,8 @@ or undef if there was no more moves to undo.
 sub undo {
     my $self = shift;
     return unless pop @{ $self->{move_hist} };
-    pop @{ $self->{pos_hist} } or carp "Can't pop empty stack";
+    pop @{ $self->{pos_hist} } 
+        or croak "move and pos stack out of sync!";
     return $self->peek_pos;
 }
 
@@ -211,13 +187,13 @@ __END__
 
 =head1 TODO
 
-Implement missing methods, e.g.: clone(), snapshot(), save()
-E<amp> resume().
+Implement missing methods: clone(), snapshot(), save() E<amp>
+resume().
 
 
 =head1 SEE ALSO
 
-The author's website, describing this module and other projects:
+The author's website, describing this and other projects:
 http://brautaset.org/projects/
 
 =head1 AUTHOR
