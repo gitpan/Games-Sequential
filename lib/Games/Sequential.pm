@@ -4,7 +4,7 @@ use 5.006001;
 use strict;
 use warnings;
 
-our $VERSION = '0.12';
+our $VERSION = '0.13';
 
 =head1 NAME
 
@@ -58,31 +58,25 @@ The function C<move> can be given as an argument to this
 function. If so, there is no need to call the C<setfuncs()>
 method. Similarly, if a valid starting position is given (as
 C<initialpos>) there is no need to call init() on the returned
-object.
-
-The arguments C<ply> E<amp> C<debug> can also optionally be set
-here. They can later be changed with their respective accessor
-methods.
+object. The C<debug> option can also be set here. 
 
 =cut 
 
 sub new {
-	my $invocant = shift;
-	my $class = ref($invocant) || $invocant;
-	my $self = bless {}, $class;
+    my $invocant = shift;
+    my $class = ref($invocant) || $invocant;
+    my $self = bless {}, $class;
 
     $self->_init(@_) or carp "Failed to init object!";
     return $self;
 }
 
 
-=begin internal
-
 =item _init [@list]
 
-Initialize a AlphaBeta object.
+I<Internal method>
 
-=end
+Initialize a AlphaBeta object.
 
 =cut
 
@@ -90,16 +84,16 @@ sub _init {
     my $self = shift;
     my $args = @_ && ref($_[0]) ? shift : { @_ };
     my $config = {
-		# Stacks for backtracking
-		pos_hist	=> [],
-		move_hist	=> [],
+        # Stacks for backtracking
+        pos_hist    => [],
+        move_hist   => [],
 
-		# Callbacks
-		move	    => undef,
+        # Callbacks
+        move        => undef,
 
-		# Debug and statistics
-		debug		=> 0,
-	};
+        # Debug and statistics
+        debug       => 0,
+    };
 
     # Set defaults
     while (my ($key, $val) = each %{ $config }) {
@@ -119,7 +113,7 @@ sub _init {
         }
     }
 
-	return $self;
+    return $self;
 }
 
 =item init $position

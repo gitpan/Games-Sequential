@@ -2,6 +2,42 @@
 # arch-tag: automatic-ChangeLog--stig@brautaset.org--2004/games-sequential--devo--0.1
 #
 
+2004-06-12 09:43:34 GMT	Stig Brautaset <stig@brautaset.org>	patch-10
+
+    Summary:
+      readme tweak
+    Revision:
+      games-sequential--devo--0.1--patch-10
+
+
+    modified files:
+     Changes README
+
+
+2004-06-12 07:32:08 GMT	Stig Brautaset <stig@brautaset.org>	patch-9
+
+    Summary:
+      fix pod -- remove internal part
+    Revision:
+      games-sequential--devo--0.1--patch-9
+
+
+    modified files:
+     Changes lib/Games/Sequential.pm
+
+
+2004-06-11 23:17:36 GMT	Stig Brautaset <stig@brautaset.org>	patch-8
+
+    Summary:
+      fix indenting
+    Revision:
+      games-sequential--devo--0.1--patch-8
+
+
+    modified files:
+     Changes META.yml lib/Games/Sequential.pm
+
+
 2004-06-11 21:46:54 GMT	Stig Brautaset <stig@brautaset.org>	patch-7
 
     Summary:
