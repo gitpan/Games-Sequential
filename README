@@ -1,5 +1,5 @@
-Games::Sequential version 0.1x
-==============================
+Games::Sequential version 0.2.x
+===============================
 
 Games::Sequential provides an object oriented framework for
 developing sequential games. It pretty much only has support for

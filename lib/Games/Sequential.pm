@@ -4,7 +4,7 @@ use 5.006001;
 use strict;
 use warnings;
 
-our $VERSION = '0.13';
+our $VERSION = '0.2.3';
 
 =head1 NAME
 
@@ -13,7 +13,7 @@ Games::Sequential - framework for sequential games with object oriented interfac
 =head1 SYNOPSIS
 
   use Games::Sequential;
-  my $game = Games::Sequential->new( initialpos => $p, move => \&move );
+  my $game = Games::Sequential->new($initialpos, move => \&move );
 
   $game->debug(1);
 
@@ -82,10 +82,12 @@ Initialize a AlphaBeta object.
 
 sub _init {
     my $self = shift;
+    my $pos = shift or croak "No initial position given!";
     my $args = @_ && ref($_[0]) ? shift : { @_ };
-    my $config = {
+
+    my %config = (
         # Stacks for backtracking
-        pos_hist    => [],
+        pos_hist    => [ $pos ],
         move_hist   => [],
 
         # Callbacks
@@ -93,46 +95,17 @@ sub _init {
 
         # Debug and statistics
         debug       => 0,
-    };
+    );
 
     # Set defaults
-    while (my ($key, $val) = each %{ $config }) {
-        $self->{$key} = $val;
-    }
+    @$self{keys %config} = values %config;
 
     # Override defaults
     while (my ($key, $val) = each %{ $args }) {
-        if (exists $self->{$key}) {
-            $self->{$key} = $val;
-            delete($args->{$key});
-        }
-        elsif ($key eq "initialpos") {
-            $self->{pos_hist} = [ $args->{initialpos} ];
-            $self->{move_hist} = [];
-            delete($args->{$key});
-        }
+        $self->{$key} = $val if exists $self->{$key};
     }
 
     return $self;
-}
-
-=item init $position
-
-Initialise an object with the starting position of the game. This
-method is required unless ->new() is invoked with an apropriate
-C<initialpos> argument.
-
-=cut
-
-# Set initial position
-sub init {
-    my $self = shift;
-    croak "No initial position given!" unless @_;
-
-    $self->{pos_hist} = [ shift ];
-    $self->{move_hist} = [ ];
-
-    return $self->peek_pos;
 }
 
 
@@ -232,7 +205,6 @@ sub undo {
 
 
 1;  # ensure using this module works
-
 __END__
 
 =back
@@ -245,7 +217,7 @@ E<amp> resume().
 
 =head1 SEE ALSO
 
-The author's website, describing this module and others:
+The author's website, describing this module and other projects:
 http://brautaset.org/projects/
 
 =head1 AUTHOR

@@ -4,7 +4,7 @@
 
 #########################
 
-use Test::More tests => 18;
+use Test::More tests => 17;
 BEGIN { use_ok('Games::Sequential') };
 
 #########################
@@ -22,9 +22,8 @@ sub move2 {
     return $p - $m;
 }
 	
-ok(my $g = Games::Sequential->new(move => \&move), "Constructor");
+ok(my $g = Games::Sequential->new(1, move => \&move), "Constructor");
 can_ok($g, qw/new setfuncs move undo peek_pos peek_move debug/);
-ok($g->init(1), "set initial position");
 ok(1 == $g->peek_pos, "peek pos");
 ok(!$g->peek_move, "peek move");
 
